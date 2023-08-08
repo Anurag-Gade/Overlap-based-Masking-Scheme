@@ -1,4 +1,4 @@
-def add_overlaps(adjacency_dict, start_dict, end_dict):
+def add_overlaps(sub_cuboid, adjacency_dict, start_dict, end_dict):
     
     
     '''
@@ -14,7 +14,8 @@ def add_overlaps(adjacency_dict, start_dict, end_dict):
        coordinate differs from one another and subtract the offsets from the intersecting regions.
     '''
     
-    sub_cuboids = np.zeros(shape=(128,128,90))
+#     sub_cuboids = np.zeros(shape=(128,128,90))
+    sub_cuboids = sub_cuboid
     overlapping_factor = 8
     for key in adjacency_dict:
 
