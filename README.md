@@ -1,3 +1,3 @@
 # QuantConn-Challenge
 
-The code in this repository
+In the directory `src` the scripts present intend to divide a space into overlapping cuboids. 
