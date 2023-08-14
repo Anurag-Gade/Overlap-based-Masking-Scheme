@@ -5,12 +5,18 @@ from conv2dict import *
 from adjacency_check import *
 from create_overlapped_cuboid import *
 
-cuboid_data = np.random.rand(128,128,90)  # Replace this with your cuboid data
-total_num_sub_cuboids = 4  # Replace with the total number of sub-cuboids you want
+# Replace 'cuboid_data' with the actual 3D cuboid data (a 3D NumPy array)
+cuboid_data = np.random.rand(132,132,90)  # Replace this with your cuboid data
+# total_num_sub_cuboids = 12  # Replace with the total number of sub-cuboids you want
 overlap = 8  # Replace with the desired overlap (integer)
-num_sub_cubes_depth = 2  # Replace with the number of sub-cubes along the depth dimension (integer)
+# num_sub_cubes_depth = 2  # Replace with the number of sub-cubes along the depth dimension (integer)
+num_sub_cuboids_dim = {'num_sub_cuboids_x':3,
+                      'num_sub_cuboids_y':2,
+                      'num_sub_cuboids_z':2}
 
-sub_cuboids, start_coords, end_coords = divide_cuboid(cuboid_data, total_num_sub_cuboids, overlap, num_sub_cubes_depth)
+
+sub_cuboids, start_coords, end_coords = divide_cuboid(cuboid_data, overlap, num_sub_cuboids_dim)
+
 
 start_dict = conv_to_dict(start_coords)
 end_dict = conv_to_dict(end_coords) 
