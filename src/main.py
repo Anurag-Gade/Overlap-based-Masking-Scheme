@@ -17,6 +17,14 @@ num_sub_cuboids_dim = {'num_sub_cuboids_x':3,
 
 sub_cuboids, start_coords, end_coords = divide_cuboid(cuboid_data, overlap, num_sub_cuboids_dim)
 
+for i, sub_cuboid in enumerate(sub_cuboids):
+    print(f"Sub-cuboid {i + 1}: Shape: {sub_cuboid.shape}")
+# print(sub_cuboids[3])
+for i, start_coord in enumerate(start_coords):
+    print(f"Sub-cuboid {i+1}: Start Coordinates: {start_coord}") 
+
+for i, end_coord in enumerate(end_coords):
+    print(f"Sub-cuboid {i+1}: End Coordinates: {end_coord}")
 
 start_dict = conv_to_dict(start_coords)
 end_dict = conv_to_dict(end_coords) 
