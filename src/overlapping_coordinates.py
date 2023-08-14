@@ -74,21 +74,21 @@ def divide_cuboid(cuboid, overlap, num_sub_cuboids_dim):
 
 # Example usage:
 # Replace 'cuboid_data' with the actual 3D cuboid data (a 3D NumPy array)
-cuboid_data = np.random.rand(132,132,90)  # Replace this with your cuboid data
+# cuboid_data = np.random.rand(132,132,90)  # Replace this with your cuboid data
 # total_num_sub_cuboids = 12  # Replace with the total number of sub-cuboids you want
-overlap = 8  # Replace with the desired overlap (integer)
+# overlap = 8  # Replace with the desired overlap (integer)
 # num_sub_cubes_depth = 2  # Replace with the number of sub-cubes along the depth dimension (integer)
-num_sub_cuboids_dim = {'num_sub_cuboids_x':3,
-                      'num_sub_cuboids_y':2,
-                      'num_sub_cuboids_z':2}
+# num_sub_cuboids_dim = {'num_sub_cuboids_x':3,
+                      # 'num_sub_cuboids_y':2,
+                      # 'num_sub_cuboids_z':2}
 
 
-sub_cuboids, start_coords, end_coords = divide_cuboid(cuboid_data, overlap, num_sub_cuboids_dim)
-for i, sub_cuboid in enumerate(sub_cuboids):
-    print(f"Sub-cuboid {i + 1}: Shape: {sub_cuboid.shape}")
-# print(sub_cuboids[3])
-for i, start_coord in enumerate(start_coords):
-    print(f"Sub-cuboid {i+1}: Start Coordinates: {start_coord}") 
+# sub_cuboids, start_coords, end_coords = divide_cuboid(cuboid_data, overlap, num_sub_cuboids_dim)
+# for i, sub_cuboid in enumerate(sub_cuboids):
+#     print(f"Sub-cuboid {i + 1}: Shape: {sub_cuboid.shape}")
+# # print(sub_cuboids[3])
+# for i, start_coord in enumerate(start_coords):
+#     print(f"Sub-cuboid {i+1}: Start Coordinates: {start_coord}") 
 
-for i, end_coord in enumerate(end_coords):
-    print(f"Sub-cuboid {i+1}: End Coordinates: {end_coord}")
+# for i, end_coord in enumerate(end_coords):
+#     print(f"Sub-cuboid {i+1}: End Coordinates: {end_coord}")
