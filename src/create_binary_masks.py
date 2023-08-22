@@ -1,3 +1,5 @@
+import numpy as np
+
 def create_binary_mask(start_dict, end_dict, shape):
     
     masks = []
