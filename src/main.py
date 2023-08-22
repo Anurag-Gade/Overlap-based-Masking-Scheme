@@ -43,7 +43,7 @@ print("NIfTI File Saved")
 
 #Generate Masks
 
-masks = create_binary_masks(start_dict, end_dict, (145, 174, 145))
+masks = create_binary_mask(start_dict, end_dict, (145, 174, 145))
 np.save("/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs/masks_1.npy", masks)
 
 print("Masks Saved")
