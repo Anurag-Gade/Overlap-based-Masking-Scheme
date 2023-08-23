@@ -4,6 +4,8 @@ from overlapping_coordinates import *
 from conv2dict import *
 from adjacency_check import *
 from create_overlapped_cuboid import *
+from create_binary_masks import *
+from segregate_masks import *
 
 cuboid_data = np.random.rand(145, 174, 145)  # Replace this with your cuboid data
 # total_num_sub_cuboids = 4  # Replace with the total number of sub-cuboids you want
@@ -47,3 +49,9 @@ masks = create_binary_mask(start_dict, end_dict, (145, 174, 145))
 np.save("/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs/masks_1.npy", masks)
 
 print("Masks Saved")
+
+ROOT_DIR = "/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs"
+
+masks_path = os.path.join(ROOT_DIR, "masks_1.npy")
+
+segregate_masks(ROOT_DIR, masks_path)
