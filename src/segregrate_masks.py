@@ -17,6 +17,8 @@ masks_path = os.path.join(ROOT_DIR, "masks_1.npy")
 def segregate_masks(ROOT_DIR, masks_path):
       
       consolidated_masks = np.load(masks_path)
+      
+      affine_file = nib.load("/data/pnl/home/ag1666/HCP/715041/flipped_dwi.nii.gz")
 
       print(consolidated_masks.shape)
 
@@ -24,8 +26,8 @@ def segregate_masks(ROOT_DIR, masks_path):
 
       SUB_ROOT_DIR = os.path.join(ROOT_DIR, "masks_folder")
       
-      if(os.path.isdir(SUB_ROOT_DIR)
-      os.mkdir(SUB_ROOT_DIR)
+      if(int(os.path.isdir(SUB_ROOT_DIR)) == False):
+            os.mkdir(SUB_ROOT_DIR)
 
       for i in range(total_masks):
           
@@ -33,17 +35,22 @@ def segregate_masks(ROOT_DIR, masks_path):
           name = "mask_{mask_num}".format(mask_num = i+1)
           
           folder_path = os.path.join(SUB_ROOT_DIR, name)
-          os.mkdir(folder_path)
           
-          file_name = "mask_{mask_no}.npy".format(mask_no = i+1)
+          if(int(os.path.isdir(folder_path)) == False):
+            os.mkdir(folder_path)
+          
+          file_name = "mask_{mask_no}.nii".format(mask_no = i+1)
           
           mask_file = consolidated_masks[i,:,:,:]
           
           absolute_file_path = os.path.join(folder_path, file_name)
           
-          np.save(absolute_file_path, mask_file)
+          nifti_file = nib.Nifti1Image(mask_file, affine_file.affine)
           
-          print("Mask {number} Saved!".format(number = i+1))
+          # np.save(absolute_file_path, mask_file)
+          nib.save(nifti_file, absolute_file_path)
+          
+          print("Mask {number} Saved! \n".format(number = i+1))
    
    
    
