@@ -10,9 +10,32 @@ import argparse
 
 parser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter, description = "Overlap-based Masking Scheme")
 
-parser.add_argument("--volume_shape", action='store', required=True,
+parser.add_argument('--volume_shape', action='store', required=True,
                    type=str, help='Shape of the volume intended to mask') 
 
+parser.add_argument('--sub_cubes_along_x', action='store', default=2, 
+                    type=str, help='Number of sub-cuboids along x axis')
+
+parser.add_argument('--sub_cubes_along_y', action='store', default=2,
+                    type=str, help='Number of sub-cuboids along y axis')
+
+parser.add_argument('--sub_cubes_along_z', action='store', default=2,
+                    type=str, help='Number of sub-cuboids along z axis') 
+
+parser.add_argument('--overlap', action='store', default=8, 
+                    type=str, help='Overlapping factor') 
+
+parser.add_argument('--out_folder', action='store', required=True,
+                    type=str, help='Path to output folder which stores the masks')
+
+args = parser.parse_args() 
+
+volume_shape = args.volume_shape
+sub_cubes_along_x = args.sub_cubes_along_x
+sub_cubes_along_y = args.sub_cubes_along_y
+sub_cubes_along_z = args.sub_cubes_along_z
+overlap = args.overlap
+out_folder = args.out_folder
 
 cuboid_data = np.random.rand(145, 174, 145)  # Replace this with your cuboid data
 # total_num_sub_cuboids = 4  # Replace with the total number of sub-cuboids you want
