@@ -6,7 +6,9 @@ from adjacency_check import *
 from create_overlapped_cuboid import *
 from create_binary_masks import *
 from segregate_masks import *
+
 import argparse
+import os
 
 parser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter, description = "Overlap-based Masking Scheme")
 
@@ -77,21 +79,27 @@ end_dict = conv_to_dict(end_coords)
 
 adjacency_dict = check_for_adjacency(start_dict)
 
-cube = create_cuboid(start_dict, end_dict, (145, 174, 145))
+cube = create_cuboid(start_dict, end_dict, (x_dim, y_dim, z_dim))
 
-np.save("/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs/cube_1.npy", cube)
+#Path to save the NumPy array
+array_path = os.path.join(out_folder, "output_cuboid.npy")
+
+#Path to save the NIfTI output
+nifti_path = os.path.join(out_folder, "output_cuboid.nii.gz")
+
+np.save(array_path, cube)
 
 print("Numpy File Saved")
 
 nii_file = nib.Nifti1Image(cube, affine=np.eye(4))
 
-nib.save(nii_file, "/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/nifti_outputs/cube_1.nii")
+nib.save(nii_file, nifti_path)
 
 print("NIfTI File Saved")
 
 #Generate Masks
 
-masks = create_binary_mask(start_dict, end_dict, (145, 174, 145))
+masks = create_binary_mask(start_dict, end_dict, (x_dim, y_dim, z_dim))
 np.save("/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs/masks_1.npy", masks)
 
 print("Masks Saved")
