@@ -16,31 +16,34 @@ parser.add_argument('--input_path', action='store', required=True,
 parser.add_argument('--out_folder', action='store', required=True,
                     type=str, help='Path to output folder which stores the masks')
 
-parser.add_argument('--volume_shape', action='store', required=True,
-                   type=str, help='Shape of the volume intended to mask') 
+# parser.add_argument('--volume_shape', action='store', required=True,
+#                    type=str, help='Shape of the volume intended to mask') 
 
 parser.add_argument('--sub_cubes_along_x', action='store', default=2, 
-                    type=str, help='Number of sub-cuboids along x axis')
+                    type=int, help='Number of sub-cuboids along x axis')
 
 parser.add_argument('--sub_cubes_along_y', action='store', default=2,
-                    type=str, help='Number of sub-cuboids along y axis')
+                    type=int, help='Number of sub-cuboids along y axis')
 
 parser.add_argument('--sub_cubes_along_z', action='store', default=2,
-                    type=str, help='Number of sub-cuboids along z axis') 
+                    type=int, help='Number of sub-cuboids along z axis') 
 
 parser.add_argument('--overlap', action='store', default=8, 
-                    type=str, help='Overlapping factor') 
+                    type=int, help='Overlapping factor') 
+
+parser.add_argument('--segregate', action='store', default=False,
+                    type=bool, help='Boolean flag to activate segregation of the overlapping masks')
 
 
 args = parser.parse_args() 
 
 input_path = args.input_path
 out_folder = args.out_folder
-volume_shape = args.volume_shape
 sub_cubes_along_x = args.sub_cubes_along_x
 sub_cubes_along_y = args.sub_cubes_along_y
 sub_cubes_along_z = args.sub_cubes_along_z
 overlap = args.overlap
+segregate = args.segregate
 
 input_nii = nib.load(input_path)
 input_nii_arr = input_nii.get_fdata() 
