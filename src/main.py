@@ -79,20 +79,21 @@ end_dict = conv_to_dict(end_coords)
 
 adjacency_dict = check_for_adjacency(start_dict)
 
-cube = create_cuboid(start_dict, end_dict, (x_dim, y_dim, z_dim))
-
 #Path to save the NumPy array
 array_path = os.path.join(out_folder, "output_cuboid.npy")
-
 #Path to save the NIfTI output
 nifti_path = os.path.join(out_folder, "output_cuboid.nii.gz")
+#Path to save the binary mask
+binary_mask_array_path = os.path.join(out_folder, "binary_mask.npy")
+#Path to save the binary mask (NIfTI)
+binary_mask_nifti_path = os.path.join(out_folder, "binary_mask.nii.gz") 
 
+cube = create_cuboid(start_dict, end_dict, (x_dim, y_dim, z_dim))
 np.save(array_path, cube)
 
 print("Numpy File Saved")
 
 nii_file = nib.Nifti1Image(cube, affine=np.eye(4))
-
 nib.save(nii_file, nifti_path)
 
 print("NIfTI File Saved")
@@ -100,12 +101,16 @@ print("NIfTI File Saved")
 #Generate Masks
 
 masks = create_binary_mask(start_dict, end_dict, (x_dim, y_dim, z_dim))
-np.save("/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs/masks_1.npy", masks)
+np.save(binary_mask_array_path, masks)
+
+binary_mask_nii = nib.Nifti1Image(masks, affine=np.eye(4))
+nib.save(binary_mask_nifti_path, binary_mask_nii) 
 
 print("Masks Saved")
 
-ROOT_DIR = "/data/pnl/home/ag1666/coeff_dir/CuboidTesselation/outputs/verification_outputs"
+if segregate:
 
-masks_path = os.path.join(ROOT_DIR, "masks_1.npy")
-
-segregate_masks(ROOT_DIR, masks_path)
+    ROOT_DIR = out_folder + "segregated_masks"
+    masks_path = binary_mask_array_path
+  
+    segregate_masks(ROOT_DIR, masks_path)
