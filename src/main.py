@@ -6,6 +6,13 @@ from adjacency_check import *
 from create_overlapped_cuboid import *
 from create_binary_masks import *
 from segregate_masks import *
+import argparse
+
+parser = argparse.ArgumentParser(formatter_class = argparse.RawTextHelpFormatter, description = "Overlap-based Masking Scheme")
+
+parser.add_argument("--volume_shape", action='store', required=True,
+                   type=str, help='Shape of the volume intended to mask') 
+
 
 cuboid_data = np.random.rand(145, 174, 145)  # Replace this with your cuboid data
 # total_num_sub_cuboids = 4  # Replace with the total number of sub-cuboids you want
