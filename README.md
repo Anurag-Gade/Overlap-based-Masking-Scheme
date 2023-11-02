@@ -10,7 +10,7 @@ Below is an example of the terminal input;
 
 Arguments:
 
-* input_path (type:str) -- The absolute path to the volume file intended to mask should be provided in this argument.
+* `input_path` (type:str) -- The absolute path to the volume file intended to mask should be provided in this argument.
 * out_folder (type:str) -- The absolute path to the directory in which the outputs are to be saved.
 * sub_cuboids_along_x (type:int, optional, default:2) -- The number of sub-cuboids the overall volume needs to be partitioned into along the x-axis.
 * sub_cuboids_along_y (type:int, optional, default:2) -- The number of sub-cuboids the overall volume needs to be partitioned into along the y-axis.
