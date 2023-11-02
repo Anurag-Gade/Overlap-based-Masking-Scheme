@@ -10,11 +10,11 @@ Below is an example of the terminal input;
 
 Arguments:
 
-* `input_path` (type:str) -- The absolute path to the volume file intended to mask should be provided in this argument.
-* out_folder (type:str) -- The absolute path to the directory in which the outputs are to be saved.
-* sub_cuboids_along_x (type:int, optional, default:2) -- The number of sub-cuboids the overall volume needs to be partitioned into along the x-axis.
-* sub_cuboids_along_y (type:int, optional, default:2) -- The number of sub-cuboids the overall volume needs to be partitioned into along the y-axis.
-* sub_cuboids_along_z (type:int, optional, default:2) -- The number of sub-cuboids the overall volume needs to be partitioned into along the z-axis.
-* overlap (type:int, optional, default:8) -- The overlapping factor by which each sub-cuboid will overlap with its adjacent partitions.
-* segregate (type:bool, optional, default:False) -- Flag to enable segregation in the script, if enabled the binary mask is segregated into its constituent sub-cuboids and saved in seperate folders.
+* `input_path (type:str)` -- The absolute path to the volume file intended to mask should be provided in this argument.
+* `out_folder (type:str)` -- The absolute path to the directory in which the outputs are to be saved.
+* `sub_cuboids_along_x (type:int, optional, default:2)` -- The number of sub-cuboids the overall volume needs to be partitioned into along the x-axis.
+* `sub_cuboids_along_y (type:int, optional, default:2)` -- The number of sub-cuboids the overall volume needs to be partitioned into along the y-axis.
+* `sub_cuboids_along_z (type:int, optional, default:2)` -- The number of sub-cuboids the overall volume needs to be partitioned into along the z-axis.
+* `overlap (type:int, optional, default:8)` -- The overlapping factor by which each sub-cuboid will overlap with its adjacent partitions.
+* `segregate (type:bool, optional, default:False)` -- Flag to enable segregation in the script, if enabled the binary mask is segregated into its constituent sub-cuboids and saved in seperate folders.
 
