@@ -111,6 +111,10 @@ print("Masks Saved")
 if segregate:
 
     ROOT_DIR = out_folder + "segregated_masks"
+
+    if os.path.isdir(ROOT_DIR):
+        os.mkdir(ROOT_DIR) 
+        
     masks_path = binary_mask_array_path
   
     segregate_masks(ROOT_DIR, masks_path)
