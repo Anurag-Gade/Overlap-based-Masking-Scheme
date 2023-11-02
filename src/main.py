@@ -58,7 +58,7 @@ z_dim = input_nii_arr.shape[2]
 cuboid_data = np.random.rand(x_dim, y_dim, z_dim)  # Replace this with your cuboid data
 # total_num_sub_cuboids = 4  # Replace with the total number of sub-cuboids you want
 overlap = overlap  # Replace with the desired overlap (integer)
-num_sub_cuboids_dim = {"num_sub_cuboids_x":sub_cuboids_along_x,  # Replace with the number of sub-cubes along the depth dimension (integer)
+num_sub_cuboids_dim = {"num_sub_cuboids_x":sub_cuboids_along_x,  # Replace with the number of sub-cuboids along the depth dimension (integer)
                    "num_sub_cuboids_y":sub_cuboids_along_y,
                    "num_sub_cuboids_z":sub_cuboids_along_z}
 
