@@ -21,13 +21,13 @@ parser.add_argument('--out_folder', action='store', required=True,
 # parser.add_argument('--volume_shape', action='store', required=True,
 #                    type=str, help='Shape of the volume intended to mask') 
 
-parser.add_argument('--sub_cubes_along_x', action='store', default=2, 
+parser.add_argument('--sub_cuboids_along_x', action='store', default=2, 
                     type=int, help='Number of sub-cuboids along x axis')
 
-parser.add_argument('--sub_cubes_along_y', action='store', default=2,
+parser.add_argument('--sub_cuboids_along_y', action='store', default=2,
                     type=int, help='Number of sub-cuboids along y axis')
 
-parser.add_argument('--sub_cubes_along_z', action='store', default=2,
+parser.add_argument('--sub_cuboids_along_z', action='store', default=2,
                     type=int, help='Number of sub-cuboids along z axis') 
 
 parser.add_argument('--overlap', action='store', default=8, 
@@ -41,9 +41,9 @@ args = parser.parse_args()
 
 input_path = args.input_path
 out_folder = args.out_folder
-sub_cubes_along_x = args.sub_cubes_along_x
-sub_cubes_along_y = args.sub_cubes_along_y
-sub_cubes_along_z = args.sub_cubes_along_z
+sub_cuboids_along_x = args.sub_cuboids_along_x
+sub_cuboids_along_y = args.sub_cuboids_along_y
+sub_cuboids_along_z = args.sub_cuboids_along_z
 overlap = args.overlap
 segregate = args.segregate
 
@@ -58,9 +58,9 @@ z_dim = input_nii_arr.shape[2]
 cuboid_data = np.random.rand(x_dim, y_dim, z_dim)  # Replace this with your cuboid data
 # total_num_sub_cuboids = 4  # Replace with the total number of sub-cuboids you want
 overlap = overlap  # Replace with the desired overlap (integer)
-num_sub_cuboids_dim = {"num_sub_cuboids_x":sub_cubes_along_x,  # Replace with the number of sub-cubes along the depth dimension (integer)
-                   "num_sub_cuboids_y":sub_cubes_along_y,
-                   "num_sub_cuboids_z":sub_cubes_along_z}
+num_sub_cuboids_dim = {"num_sub_cuboids_x":sub_cuboids_along_x,  # Replace with the number of sub-cubes along the depth dimension (integer)
+                   "num_sub_cuboids_y":sub_cuboids_along_y,
+                   "num_sub_cuboids_z":sub_cuboids_along_z}
 
 
 sub_cuboids, start_coords, end_coords = divide_cuboid(cuboid_data, overlap, num_sub_cuboids_dim)
