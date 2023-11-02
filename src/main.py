@@ -88,12 +88,12 @@ binary_mask_array_path = os.path.join(out_folder, "binary_mask.npy")
 #Path to save the binary mask (NIfTI)
 binary_mask_nifti_path = os.path.join(out_folder, "binary_mask.nii.gz") 
 
-cube = create_cuboid(start_dict, end_dict, (x_dim, y_dim, z_dim))
-np.save(array_path, cube)
+generated_cuboid = create_cuboid(start_dict, end_dict, (x_dim, y_dim, z_dim))
+np.save(array_path, generated_cuboid)
 
 print("Numpy File Saved")
 
-nii_file = nib.Nifti1Image(cube, affine=np.eye(4))
+nii_file = nib.Nifti1Image(generated_cuboid, affine=np.eye(4))
 nib.save(nii_file, nifti_path)
 
 print("NIfTI File Saved")
